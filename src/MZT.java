@@ -17,7 +17,7 @@ import java.net.URL;
  */
 
 public class MZT {
-    private static String ENCODE = "GBK";
+    private static String ENCODE = "GBK";//所爬网页的编码格式
     private static String filterId = "picture";
     private static String filterTag = "div";
     private static String filterP = "p";
@@ -160,6 +160,10 @@ public class MZT {
         }
     }
 
+    /**
+     * 可测试网页是否响应，如果返回非200参数代表连接失败
+     *  可根据需要添加，这里并没有使用。
+     * */
     public static boolean testURL(String url) {
         if (null == url || url.length() < 0) {
             return false;
@@ -180,9 +184,10 @@ public class MZT {
 
 
     public static void main(String[] args){
-        int baseUrl = 4652;
-        for(int i = 0; i<1000 ; i++){
-            String url = "http://www.meizitu.com/a/"+String.valueOf(baseUrl) +".html";
+        int baseUrl = 4652;//meizitu.com上面的路径参数
+        String url ;
+        for(int i = 0; i<1000 ; i++){//这里是获取4652-5652的图片，不过并无法完全获取，因为有些页面不存在，而有些页面编码不是gbk
+            url = "http://www.meizitu.com/a/"+String.valueOf(baseUrl) +".html";
                  getImgUrlListByMZTUrl(url);
                  baseUrl += 1;
             }
